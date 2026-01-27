@@ -1,0 +1,17 @@
+# Classes in Hermes
+
+fortify Person:
+    scheme initialize(myself, name, age):
+        myself.name = name
+        myself.age = age
+    
+    scheme greet(myself):
+        announce("Hello, I am " + myself.name)
+    
+    scheme birthday(myself):
+        myself.age = myself.age + 1
+        announce(myself.name + " is now " + str(myself.age))
+
+person = Person("Raghu", 30)
+person.greet()
+person.birthday()

@@ -1,0 +1,12 @@
+# Fibonacci in Hermes
+
+scheme fibonacci(n):
+    aahaan n at_most 1:
+        abandon n
+    abandon fibonacci(n - 1) + fibonacci(n - 2)
+
+scheme main():
+    iterate i within range(10):
+        announce(fibonacci(i))
+
+main()

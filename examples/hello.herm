@@ -1,0 +1,14 @@
+# Hello World in Hermes (Vaigai skin)
+
+scheme greet(name):
+    announce("Hello, " + name + "!")
+    abandon truth
+
+scheme main():
+    result = greet("World")
+    aahaan result:
+        announce("Greeting successful!")
+    thats_it:
+        announce("Something went wrong")
+
+main()
