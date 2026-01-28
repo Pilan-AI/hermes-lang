@@ -8,7 +8,7 @@ from typing import List, Optional
 
 
 class TokenType(Enum):
-    # Keywords - Vaigai skin (Vadivelu)
+    # Keywords - Sangam skin (Vadivelu)
     SCHEME = auto()      # def
     ABANDON = auto()     # return
     FORTIFY = auto()     # class

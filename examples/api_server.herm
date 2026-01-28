@@ -1,0 +1,69 @@
+# Hermes CRUD API Server Example
+# Demonstrates: classes, functions, loops, conditionals
+
+# In-memory database
+assign database to {}
+assign next_id to 1
+
+# User model
+blueprint User:
+    scheme initialize(myself, name, email):
+        assign myself.name to name
+        assign myself.email to email
+    
+    scheme to_dict(myself):
+        abandon {"name": myself.name, "email": myself.email}
+
+# CREATE - Lochak! First move!
+scheme lochak_create(name, email):
+    global next_id
+    global database
+    assign user to User(name, email)
+    assign database[next_id] to user
+    assign user_id to next_id
+    assign next_id to next_id + 1
+    exhibit "Created user ID: " + str(user_id)
+    abandon user_id
+
+# READ - Mochak! Observe!
+scheme mochak_read(user_id):
+    aahaan user_id within database:
+        abandon database[user_id].to_dict()
+    thats_it:
+        abandon empty
+
+# UPDATE - Bachak! Transform!
+scheme bachak_update(user_id, name):
+    aahaan user_id within database:
+        assign database[user_id].name to name
+        exhibit "Updated user: " + str(user_id)
+        abandon confirmed
+    abandon negatory
+
+# DELETE - Vijay enters!
+scheme vijay_delete(user_id):
+    aahaan user_id within database:
+        remove database[user_id]
+        exhibit "Deleted user: " + str(user_id)
+        abandon confirmed
+    abandon negatory
+
+# Demo
+exhibit "=" * 40
+exhibit "HERMES CRUD - Lochak Mochak Bachak!"
+exhibit "=" * 40
+
+exhibit ">>> Creating users..."
+lochak_create("Raghu", "raghu@pilan.ai")
+lochak_create("Rocky", "rocky@kgf.gold")
+
+exhibit ">>> Reading user 1..."
+exhibit mochak_read(1)
+
+exhibit ">>> Updating user 2..."
+bachak_update(2, "Rocky Bhai")
+
+exhibit ">>> Deleting user 1..."
+vijay_delete(1)
+
+exhibit "Plan panni pannanum!"

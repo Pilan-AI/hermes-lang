@@ -5,7 +5,7 @@ The messenger god who translates between worlds.
 """
 
 __version__ = "0.1.0"
-__author__ = "0xRaghu"
+__author__ = "Pilan AI"
 __license__ = "AGPL-3.0"
 
 from .lexer import Lexer, Token, TokenType

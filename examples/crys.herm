@@ -1,0 +1,89 @@
+# CRYS - Knowledge Crystallizer
+# Written in Hermes (Sangam skin)
+# "Intelligence. Crystallized."
+#
+# Takes raw thoughts and crystallizes them into
+# structured knowledge atoms.
+
+fortify Crystal:
+    scheme initialize(myself, title, insight, tags):
+        myself.title = title
+        myself.insight = insight
+        myself.tags = tags
+        myself.connections = []
+
+    scheme connect(myself, other_crystal):
+        myself.connections.append(other_crystal.title)
+        other_crystal.connections.append(myself.title)
+        abandon nothing
+
+    scheme display(myself):
+        announce("=" * 50)
+        announce("CRYSTAL: " + myself.title)
+        announce("-" * 50)
+        announce("Insight: " + myself.insight)
+        announce("Tags: " + str(myself.tags))
+        aahaan len(myself.connections) > 0:
+            announce("Links: " + str(myself.connections))
+        thats_it:
+            announce("Links: (none yet)")
+        announce("=" * 50)
+
+
+fortify Vault:
+    scheme initialize(myself):
+        myself.crystals = []
+
+    scheme crystallize(myself, title, insight, tags):
+        crystal = Crystal(title, insight, tags)
+        myself.crystals.append(crystal)
+        announce("Crystallized: " + title)
+        abandon crystal
+
+    scheme search(myself, query):
+        results = []
+        iterate crystal within myself.crystals:
+            aahaan query within crystal.title:
+                results.append(crystal)
+            cascade query within crystal.insight:
+                results.append(crystal)
+        abandon results
+
+    scheme display_all(myself):
+        announce("")
+        announce("PILAN KNOWLEDGE VAULT")
+        announce("Crystals: " + str(len(myself.crystals)))
+        announce("")
+        iterate crystal within myself.crystals:
+            crystal.display()
+            announce("")
+
+
+# --- Main: Crystallize knowledge ---
+
+vault = Vault()
+
+# Crystallize insights from AI conversations
+c1 = vault.crystallize("Proxy Pattern", "EIP-1967 storage slots prevent collision in upgradeable contracts", ["solidity", "proxy", "evm"])
+
+c2 = vault.crystallize("Knowledge Graphs", "Conversations are ephemeral but patterns compound across sessions", ["mnemo", "intelligence", "patterns"])
+
+c3 = vault.crystallize("Cultural Syntax", "Programming keywords shape thought - native language keywords reduce cognitive load", ["hermes", "language", "cognition"])
+
+# Connect related crystals
+c1.connect(c2)
+c2.connect(c3)
+
+# Display the vault
+vault.display_all()
+
+# Search
+announce("")
+announce("Searching for 'pattern'...")
+results = vault.search("pattern")
+announce("Found " + str(len(results)) + " crystals")
+iterate r within results:
+    announce("  -> " + r.title)
+
+announce("")
+announce("Intelligence. Crystallized.")

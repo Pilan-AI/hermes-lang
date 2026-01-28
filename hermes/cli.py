@@ -10,7 +10,7 @@ from pathlib import Path
 def main():
     parser = argparse.ArgumentParser(
         prog="hermes",
-        description="Hermes Language - Cultural syntax transpiled to Python"
+        description="Hermes thinks through you! Cultural syntax transpiled to Python"
     )
     parser.add_argument("--version", action="version", version="hermes 0.1.0")
     

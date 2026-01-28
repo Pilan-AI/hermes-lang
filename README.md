@@ -1,36 +1,40 @@
-# Hermes
+<div align="center">
 
-### The messenger god who translates between worlds
+# hermes-lang
+
+### Hermes thinks through you!
 
 > Your cultural syntax → Python. Seamlessly.
+
+</div>
 
 ---
 
 ## What is Hermes?
 
-A programming language with **swappable cultural skins**. Write code in syntax inspired by comedy, cinema, memes - it all transpiles to Python.
+A programming language with **swappable cultural skins**. Write code in syntax inspired by comedy, cinema, memes — it all transpiles to Python.
 
 ```bash
-# Run with Vadivelu skin (default)
-hermes run hello.hm
+# Run a Hermes file
+hermes run hello.herm
 
-# Run with Monty Python skin
-hermes run hello.hm --skin monty
+# Transpile to Python
+hermes compile hello.herm -o hello.py
 
-# See available skins
-hermes skins
+# Syntax check
+hermes check hello.herm
 ```
 
 ## Why Hermes?
 
-**Hermes** (Ἑρμῆς) - Greek god who:
+**Hermes** (Ἑρμῆς) — Greek god who:
 - Translates between mortals and gods
 - Guides souls between worlds
 - Messenger of meaning
 
 Just like this language translates your cultural syntax into universal Python.
 
-## Example (Vaigai Skin - Vadivelu)
+## Example (Sangam Skin)
 
 ```hermes
 scheme greet(name):
@@ -60,7 +64,7 @@ else:
 
 | Skin | Culture | Status |
 |------|---------|--------|
-| vaigai | Tamil Cinema (Vadivelu) | Default |
+| sangam | Tamil Cinema (Vadivelu) | Default |
 | monty | British Comedy (Monty Python) | Coming |
 | memes | Internet Culture | Coming |
 | Community contributions welcome |
@@ -68,25 +72,35 @@ else:
 ## Install
 
 ```bash
-# Homebrew
-brew install 0xraghu/tap/hermes
-
-# PyPI
-pip install hermes-lang
+# Homebrew (recommended)
+brew install hermes-lang
 
 # From source
-git clone https://github.com/0xRaghu/hermes-lang
+git clone https://github.com/Pilan-AI/hermes-lang
 cd hermes-lang && pip install -e .
 ```
 
 ## Philosophy
 
-- **Tamil roots, global wings** - Cultural origin, universal access
-- **Comedy meets code** - Programming should be memorable
-- **Skins, not forks** - One engine, infinite expressions
+- **Tamil roots, global wings** — Cultural origin, universal access
+- **Comedy meets code** — Programming should be memorable
+- **Skins, not forks** — One engine, infinite expressions
 
 ---
 
-**[GitHub](https://github.com/0xRaghu/hermes-lang)** · **[X](https://twitter.com/Pilan_AI)**
+## License
+
+hermes-lang is dual-licensed:
+
+- **AGPL v3** — Free for open source and personal use
+- **Commercial License** — For proprietary/enterprise use
+
+---
+
+<div align="center">
+
+**[GitHub](https://github.com/Pilan-AI/hermes-lang)** · **[X](https://x.com/Pilan_AI)**
 
 *Pay what you want: Bitcoin accepted*
+
+</div>

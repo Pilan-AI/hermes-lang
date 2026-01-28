@@ -1,4 +1,4 @@
-# Hello World in Hermes (Vaigai skin)
+# Hello World in Hermes (Sangam skin)
 
 scheme greet(name):
     announce("Hello, " + name + "!")
