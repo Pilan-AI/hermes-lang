@@ -12,9 +12,6 @@ def main():
         prog="hermes",
         description="Hermes thinks through you! Cultural syntax transpiled to Python"
     )
-    parser.add_argument("--version", action="version", version="hermes 0.1.0")
-    
-    subparsers = parser.add_subparsers(dest="command", help="Commands")
     
     # run command
     run_parser = subparsers.add_parser("run", help="Run a Hermes file")
@@ -29,6 +26,9 @@ def main():
     # check command
     check_parser = subparsers.add_parser("check", help="Syntax check only")
     check_parser.add_argument("file", help="Path to .herm file")
+    
+    # mcp serve command
+    mcp_parser = subparsers.add_parser("serve-mcp", help="Start MCP server for auto-injection")
     
     args = parser.parse_args()
     
