@@ -8,12 +8,19 @@ from pathlib import Path
 
 
 def main():
+    from .onboarding import is_first_run, run_onboarding
+    
+    if is_first_run() and len(sys.argv) == 1:
+        run_onboarding()
+        return 0
+    
     parser = argparse.ArgumentParser(
         prog="hermes",
         description="Hermes thinks through you! Cultural syntax transpiled to Python"
     )
     
     subparsers = parser.add_subparsers(dest="command")
+    subparsers.add_parser("onboarding", help="Show onboarding tutorial again")
     
     run_parser = subparsers.add_parser("run", help="Run a Hermes file")
     run_parser.add_argument("file", help="Path to .herm file")
@@ -35,6 +42,11 @@ def main():
     
     if not args.command:
         parser.print_help()
+        return 0
+    
+    if args.command == "onboarding":
+        from .onboarding import run_onboarding
+        run_onboarding()
         return 0
     
     try:
