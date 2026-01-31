@@ -141,7 +141,6 @@ Cultural Keywords (Sangam Skin):
             return {"content": self.handle_inject({"query": "syntax reference"})["content"]}
         
         # Get specific topic help
-        topic_lower = topic.lower()
         context = self.handle_inject({"query": topic})["content"]
         
         return {"content": context}

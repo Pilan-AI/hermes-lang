@@ -294,7 +294,7 @@ def create_sample_project(console):
     
     config_file = hermes_dir / "config.json"
     if not config_file.exists():
-        config_file.write_text('{"onboarding_completed": true, "version": "0.1.0"}')
+        config_file.write_text('{"onboarding_completed": true, "version": "0.2.0"}')
     
     hello_file = examples_dir / "hello.herm"
     hello_file.write_text("""scheme greet(name):
@@ -325,7 +325,7 @@ def create_sample_project_plain():
     
     config_file = hermes_dir / "config.json"
     if not config_file.exists():
-        config_file.write_text('{"onboarding_completed": true, "version": "0.1.0"}')
+        config_file.write_text('{"onboarding_completed": true, "version": "0.2.0"}')
     
     hello_file = examples_dir / "hello.herm"
     hello_file.write_text("""scheme greet(name):
