@@ -36,23 +36,21 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install build
+        pip install build pytest
         pip install -e .
 
-    - name: Run tests (if they exist)
-      run: |
-        if [ -d "tests" ]; then
-          python -m pytest tests/ -v
-        else
-          echo "No tests found, skipping"
-        fi
-      continue-on-error: true
+    - name: Run tests
+      run: python -m pytest tests/ -v || python tests/test_examples.py
 
-    - name: Syntax check example
-      run: python hermes/hermes.py check examples/hello.herm
+    - name: Syntax check examples
+      run: |
+        python -m hermes check examples/hello.herm
+        python -m hermes check examples/classes.herm
+        python -m hermes check examples/fibonacci.herm
+        python -m hermes check examples/api_server.herm
 
     - name: Verify installation
-      run: hermes --help
+      run: python -m hermes --help
 
   lint:
     name: Lint
@@ -96,10 +94,15 @@ jobs:
       with:
         python-version: '3.12'
 
+    - name: Install build dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install build
+
     - name: Build package
       run: python -m build
 
     - name: Check package
       run: |
         ls -la dist/
-        tar -tzf dist/*.tar.gz
+        tar -tzf dist/*.tar.gz | head -20
