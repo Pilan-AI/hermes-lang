@@ -32,3 +32,11 @@ hermes = "hermes.cli:main"
 
 [tool.setuptools]
 packages = ["hermes"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]

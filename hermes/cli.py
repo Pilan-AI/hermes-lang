@@ -13,7 +13,8 @@ def main():
         description="Hermes thinks through you! Cultural syntax transpiled to Python"
     )
     
-    # run command
+    subparsers = parser.add_subparsers(dest="command")
+    
     run_parser = subparsers.add_parser("run", help="Run a Hermes file")
     run_parser.add_argument("file", help="Path to .herm file")
     run_parser.add_argument("--debug", action="store_true", help="Show transpiled code")

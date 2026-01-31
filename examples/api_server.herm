@@ -1,28 +1,28 @@
-# Hermes CRUD API Server Example
+# Hermes CRUD API Server Example (Simplified)
 # Demonstrates: classes, functions, loops, conditionals
 
 # In-memory database
-assign database to {}
-assign next_id to 1
+database = {}
+next_id = 1
 
 # User model
-blueprint User:
+fortify User:
     scheme initialize(myself, name, email):
-        assign myself.name to name
-        assign myself.email to email
+        myself.name = name
+        myself.email = email
     
     scheme to_dict(myself):
         abandon {"name": myself.name, "email": myself.email}
 
 # CREATE - Lochak! First move!
 scheme lochak_create(name, email):
-    global next_id
-    global database
-    assign user to User(name, email)
-    assign database[next_id] to user
-    assign user_id to next_id
-    assign next_id to next_id + 1
-    exhibit "Created user ID: " + str(user_id)
+    recognize next_id
+    recognize database
+    user = User(name, email)
+    database[next_id] = user
+    user_id = next_id
+    next_id = next_id + 1
+    announce("Created user ID: " + str(user_id))
     abandon user_id
 
 # READ - Mochak! Observe!
@@ -30,40 +30,39 @@ scheme mochak_read(user_id):
     aahaan user_id within database:
         abandon database[user_id].to_dict()
     thats_it:
-        abandon empty
+        abandon nothing
 
 # UPDATE - Bachak! Transform!
 scheme bachak_update(user_id, name):
     aahaan user_id within database:
-        assign database[user_id].name to name
-        exhibit "Updated user: " + str(user_id)
-        abandon confirmed
-    abandon negatory
+        database[user_id].name = name
+        announce("Updated user: " + str(user_id))
+        abandon truth
+    abandon falsehood
 
-# DELETE - Vijay enters!
-scheme vijay_delete(user_id):
-    aahaan user_id within database:
-        remove database[user_id]
-        exhibit "Deleted user: " + str(user_id)
-        abandon confirmed
-    abandon negatory
+# LIST - Show all users!
+scheme list_all():
+    user_list = []
+    iterate user_id within database:
+        user_list.append(database[user_id].to_dict())
+    abandon user_list
 
 # Demo
-exhibit "=" * 40
-exhibit "HERMES CRUD - Lochak Mochak Bachak!"
-exhibit "=" * 40
+announce("=" * 40)
+announce("HERMES CRUD - Lochak Mochak Bachak!")
+announce("=" * 40)
 
-exhibit ">>> Creating users..."
-lochak_create("Raghu", "raghu@pilan.ai")
-lochak_create("Rocky", "rocky@kgf.gold")
+announce(">>> Creating users...")
+id1 = lochak_create("Raghu", "raghu@pilan.ai")
+id2 = lochak_create("Rocky", "rocky@kgf.gold")
 
-exhibit ">>> Reading user 1..."
-exhibit mochak_read(1)
+announce(">>> Reading user 1...")
+announce(mochak_read(1))
 
-exhibit ">>> Updating user 2..."
+announce(">>> Updating user 2...")
 bachak_update(2, "Rocky Bhai")
 
-exhibit ">>> Deleting user 1..."
-vijay_delete(1)
+announce(">>> Listing all users...")
+announce(list_all())
 
-exhibit "Plan panni pannanum!"
+announce("Plan panni pannanum!")
